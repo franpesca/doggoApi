@@ -132,32 +132,6 @@
   opacity: 0;
 }
   
-  // .fade-enter-active{
-  //   animation: showBurgerino 1s ease forwards;
-  // }
-  // .fade-enter-active{
-  //   animation: hideBurgerino 1s ease forwards;
-  // }
-  // @keyframes showBurgerino{
-  //   0% {
-  //     opacity: 0;
-  //     visibility: visible;
-  //   }
-  //   100%{
-  //     opacity: 1;
-  //     visibility: hidden;
-  //   }
-  // }
-  //   @keyframes hideBurgerino{
-  //   0% {
-  //     opacity: 1;
-  //     visibility: visible;
-  //   }
-  //   100%{
-  //     opacity: 0;
-  //     visibility: hidden;
-  //   }
-  // }
   .burgerino {
     ul {
       list-style-type: none;
