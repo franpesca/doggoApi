@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './components/Login'
-import Home from './components/Home.vue'
+import Homepage from './components/Homepage.vue'
 import Navigation from './components/Navigation.vue'
 // import store from './store'
 

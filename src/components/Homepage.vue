@@ -1,10 +1,19 @@
 <template>
-  <div><h1>Homepage</h1></div>
+  <div>
+    <Navigation />
+    <h1>Homepage</h1>
+    <!-- <Footer /> -->
+  </div>
 </template>
 
 <script>
-export default {
-  
-}
+import Navigation from './Navigation'
+import Footer from './Footer'
+  export default {
+  components: {
+    Navigation,
+    Footer
+  }
+  }
 </script>
 

@@ -29,7 +29,7 @@
 
 <script>
   import store from './../store.js'
-  import Home from './Home.vue'
+  import Homepage from './Homepage.vue'
   import {
     mapState, mapMutations
   } from 'vuex';

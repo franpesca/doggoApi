@@ -39,7 +39,7 @@ const store = new Vuex.Store({
        console.log(state.isLogged, 'tiprego')
          state.isLogged  
          console.log(router.push)
-         router.push('/home') 
+         router.push('/homepage') 
     }
   }
 },
