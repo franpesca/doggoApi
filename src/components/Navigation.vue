@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu background-color="#fec1cb" text-color="#fff" active-text-color="#45a0fc" class="hidden-xs-only el-menu-demo" :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+    <el-menu background-color="#221b29" text-color="#fff" active-text-color="#45a0fc" class="hidden-xs-only el-menu-demo" :default-active="activeIndex" mode="horizontal" @select="handleSelect">
       <el-menu-item index="1">DoggoDog</el-menu-item>
       <el-submenu index="2">
         <template slot="title">InDaDogs
@@ -27,7 +27,7 @@
         <button @click="isToggleActive = !isToggleActive" v-bind:class="{ toggleActive : !isToggleActive, toggleDisabled : isToggleActive }"><span v-bind:class="{ toggleActive : !isToggleActive, toggleDisabled : isToggleActive }"> </span> </button>
       </div>
     </div>
-  <transition name="slide-fade">
+  <transition name="slide">
     <div class="burgerino" v-if="isToggleActive">
       <ul>
         <li>DoggoDog</li>
@@ -48,7 +48,7 @@
     }),
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       }
     }
   }
@@ -56,7 +56,7 @@
 
 <style lang="scss" scoped>
   .burgerManu {
-    background-color: pink;
+    background-color: rgb(34, 27, 28);
     height: 70px;
     ;
     .wrapper {
@@ -132,6 +132,32 @@
   opacity: 0;
 }
   
+  // .fade-enter-active{
+  //   animation: showBurgerino 1s ease forwards;
+  // }
+  // .fade-enter-active{
+  //   animation: hideBurgerino 1s ease forwards;
+  // }
+  // @keyframes showBurgerino{
+  //   0% {
+  //     opacity: 0;
+  //     visibility: visible;
+  //   }
+  //   100%{
+  //     opacity: 1;
+  //     visibility: hidden;
+  //   }
+  // }
+  //   @keyframes hideBurgerino{
+  //   0% {
+  //     opacity: 1;
+  //     visibility: visible;
+  //   }
+  //   100%{
+  //     opacity: 0;
+  //     visibility: hidden;
+  //   }
+  // }
   .burgerino {
     ul {
       list-style-type: none;

@@ -1,16 +1,21 @@
 <template>
   <section class="bg-image">
     <div class="gradient">
+      <!-- <transition name="bouce">
+        <h1>Welcome to 'La Razza Pazza'</h1>
+      </transition> -->
       <div class="login-wrapper">
         <p>Login with Social Media</p>
         <a class="social fb" href="https://it-it.facebook.com/" target="_blank>">Login with Facebook </a>
         <a class="social tw" href="https://twitter.com/?lang=it" target="_blank>">Login with Twitter</a>
         <a class="social gg" href="https://accounts.google.com/signin/v2/sl/pwd?hl=IT&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank>">Login with Google</a>
         <p>Or sign in manually</p>
-        <form @keydown.enter.native="checkForm(form)" @submit.prevent="checkForm(form)">
-          <div class="input-wrapper"><i class="icon-profile icon-input " ></i><input v-model="form.username" class="social username-psw" type="text" placeholder="Username"></div>
-          <div class="input-wrapper"><i class="icon-password icon-inpu"></i><input :type="inputTypePsw" v-model="form.password" class="social username-psw" placeholder="Password"></div>
-          <button type="text" @click="switchType"><i class="icon-eye-blocked" ></i> watchyapsw</button><br>
+        <form @keyup.enter.native="checkForm" @submit.prevent="checkForm">
+          <div class="input-wrapper"><i class="icon-profile icon-input " ></i><input autocomplete="off" v-model="form.username" class="social username-psw" type="text" placeholder="Username"></div>
+          <span class="icon-point-right"></span><p style="color: red; margin-top: -2px; font-weight: 300" v-if="error.user"> Please, type again your username</p>
+          <div class="input-wrapper"><i class="icon-password icon-input"></i><input autocomplete="off" :type="inputTypePsw" v-model="form.password" class="social username-psw" placeholder="Password"></div>
+          <p style="color: red; margin-top: -2px; font-weight: 300" v-if="error.psw"> Please, type again your password </p>
+          <button type="text" @click="switchType"><i class="icon-eye-blocked" ></i> watch your psw</button><br>
 
           <input class="social login rotate" type="submit">
         </form>
@@ -24,26 +29,32 @@
 
 <script>
   import store from './../store.js'
+  import Home from './Home.vue'
   import {
-    mapActions
+    mapState, mapMutations
   } from 'vuex';
   export default {
+    computed: {
+      ...mapState({
+        isLogged: state => state.isLogged,
+        form : state => state.form,
+        error: state => state.error,
+      }),
+
+    },
     data: () => ({
       isActive: false,
       inputTypePsw: 'password',
-      form: {
-        password: '',
-        username: '',
-      }
     }),
     methods: {
       switchType(){
         return this.inputTypePsw = this.inputTypePsw === 'password' ? 'text' : 'password' 
-      }
+      },
+      ...mapMutations({
+        checkForm:'CHECKFORM'
+      })
     },
-    computed: {
- 
-    }
+
   }
 </script>
 
@@ -64,7 +75,7 @@
       left: 0;
     }
     .login-wrapper {
-      width: 35%;
+      width: 32%;
       display: flex;
       flex-direction: column;
       position: absolute;
@@ -72,7 +83,7 @@
       left: 55%;
       background-color: rgba(255, 255, 255, 0.416);
       border-radius: 5px;
-      border: 1px solid rgba(114, 54, 54, 0.516);
+      border: 2px solid #0e4b88; 
       p:first-child {
         font-size: 28px;
       }
@@ -148,7 +159,8 @@
         border-radius: 0;
         width: 100%;
         margin-bottom: 0px;
-        background-color: rgba(114, 54, 54, 0.516);
+        background-color: #0e4b88;
+        // background-color: rgba(114, 54, 54, 0.516);
       }
     }
   }
