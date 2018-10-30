@@ -21,6 +21,9 @@
         </el-menu>
         <div class="line"></div>
 
+  <div v-show="isAuthenticated">
+    <img src="./../assets/icons/user.svg">
+  </div>
     <div  class="hidden-sm-and-up burgerManu">
       <div class="wrapper">
         <button @click="isToggleActive = !isToggleActive" v-bind:class="{ toggleActive : !isToggleActive, toggleDisabled : isToggleActive }"><span v-bind:class="{ toggleActive : !isToggleActive, toggleDisabled : isToggleActive }"> </span> </button>
@@ -40,7 +43,17 @@
 
 <script>
   import 'element-ui/lib/theme-chalk/display.css';
+  import store from './../store.js'
+import { mapGetters, mapState } from 'vuex';
   export default {
+    computed: {
+      ...mapGetters({
+
+      }),
+      ...mapState({
+        isAuthenticated : state => state.isAuthenticated,
+      })
+    },
     data: () => ({
       activeIndex: '1',
       isToggleActive: false

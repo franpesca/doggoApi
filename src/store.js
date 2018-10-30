@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 
   state: {
+    isAuthenticated: true,
     dogs: [],
     cats: [],
     isLogged: true,
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
   getters: {
     getAuthentiation: state => state.isLogged,
     getCats: state => state.cats,
-    getDogs: state => state.dogs
+    getDogs: state => state.dogs,
+    isAuthenticated: state => state => state.isAuthenticated,
   },
   mutations: {
     CHECKFORM(state){
@@ -42,6 +44,7 @@ const store = new Vuex.Store({
          state.isLogged  
          console.log(router.push)
          router.push('/') 
+         state.isAuthenticated
     }
   },
   SET_CATS(state, payload){
