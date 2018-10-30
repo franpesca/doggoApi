@@ -1,9 +1,6 @@
 <template>
   <section class="bg-image">
     <div class="gradient">
-      <!-- <transition name="bouce">
-        <h1>Welcome to 'La Razza Pazza'</h1>
-      </transition> -->
       <div class="login-wrapper">
         <p>Login with Social Media</p>
         <a class="social fb" href="https://it-it.facebook.com/" target="_blank>">Login with Facebook </a>
@@ -60,14 +57,15 @@
 
 <style lang="scss" scoped>
   .bg-image {
-    background-image: url('./../assets/images/RAZZAPAZZA.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
+    // background-image: url('./../assets/images/RAZZAPAZZA.jpg');
+    background-image: linear-gradient(to bottom right, rgba(44, 28, 48, 0.886), rgb(242, 195, 137));
+    // background-repeat: no-repeat;
+    // background-position: center;
     height: 100vh;
     background-size: cover;
     // filter: grayscale(90%);
     .gradient {
-      background-image: linear-gradient(90deg, rgba(41, 39, 39, 0.664) 0%, rgba(66, 74, 80, 0.678) 100%), url("/../../asset/beer.jpg");
+      // background-image: linear-gradient(90deg, rgba(41, 39, 39, 0.664) 0%, rgba(66, 74, 80, 0.678) 100%), url("/../../asset/beer.jpg");
       width: 100%;
       height: 100%;
       position: absolute;
@@ -79,11 +77,11 @@
       display: flex;
       flex-direction: column;
       position: absolute;
-      top: 5%;
-      left: 55%;
+      top: 8%;
+      left: 35%;
       background-color: rgba(255, 255, 255, 0.416);
       border-radius: 5px;
-      border: 2px solid #0e4b88; 
+      border: 2px solid rgba(44, 28, 48, 0.886); 
       p:first-child {
         font-size: 28px;
       }
@@ -118,7 +116,7 @@
         -webkit-box-shadow: 0 0 0px 1000px white inset;
       }
       .social {
-        margin: 10px;
+        margin: 7px;
         border: 1px solid black;
         border-radius: 7px;
         color: white;
@@ -129,7 +127,7 @@
           color: black;
         }
         &.login {
-          background-color: green;
+          background-color: rgba(255, 132, 0, 0.948);
           color: white;
           font-size: 18px;
         }
@@ -144,7 +142,6 @@
         background-color: #dd4b39;
       }
       button {
-        cursor: url('./../assets/images/curosre.png'), auto;
         // transition-duration: 1s;
         &:active,
         &:focus {
@@ -159,7 +156,8 @@
         border-radius: 0;
         width: 100%;
         margin-bottom: 0px;
-        background-color: #0e4b88;
+        background-color: rgba(44, 28, 48, 0.886);
+      
         // background-color: rgba(114, 54, 54, 0.516);
       }
     }

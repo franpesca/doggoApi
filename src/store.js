@@ -1,14 +1,15 @@
 import Vue from 'vue'
-import Vuex, { mapActions } from 'vuex'
-import routes from './routes'
+import Vuex from 'vuex'
 import router from './routes'
-// import axios from 'axios'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
 
   state: {
+    dogs: [],
+    cats: [],
     isLogged: true,
     form: {
       username: '',
@@ -20,7 +21,9 @@ const store = new Vuex.Store({
     } 
 },
   getters: {
-    getAuthentiation: state => state.isLogged
+    getAuthentiation: state => state.isLogged,
+    getCats: state => state.cats,
+    getDogs: state => state.dogs
   },
   mutations: {
     CHECKFORM(state){
@@ -36,15 +39,40 @@ const store = new Vuex.Store({
        state.error.psw = true 
      } else {
        console.log('entrato nel ultimo else')
-       console.log(state.isLogged, 'tiprego')
          state.isLogged  
          console.log(router.push)
-         router.push('/homepage') 
+         router.push('/') 
     }
+  },
+  SET_CATS(state, payload){
+    state.cats=payload
+  },
+  SET_DOGS(state, payload){
+    state.dogs=payload
   }
 },
   actions: {
-
+    getCarouselCatsPhotos({ commit }) {
+      console.log('catCarousel')
+        // commit('SET_LOADING', true);
+        axios.get('https://api.thecatapi.com/v1/images/search?limit=25')
+        .then(res => res.data)
+        .then(res => {
+          console.log(res, 'resCats')
+        commit('SET_CATS', res)
+        // commit('SET_LOADING', false);
+        })
+    },
+    getCarouselDogsPhotos({ commit }) {
+        // commit('SET_LOADING', true);
+        axios.get('https://dog.ceo/api/breeds/image/random/25')
+        .then(res => res.data)
+        .then(res => {
+          console.log(res.message, 'resDog')
+        commit('SET_DOGS', res.message)
+        // commit('SET_LOADING', false);
+        })
+    },
   },
 })
 

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <Navigation />
     <router-view/>
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -35,6 +37,19 @@
     padding: 0;
   }
   
+  a {
+    font-weight: bold;
+    color: rgb(247, 246, 246);
+    text-decoration: none;
+  }
+    
+  
+  
+  
+  /* .router-link-active{
+      text-decoration: underline;
+    } */
+  
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -42,6 +57,6 @@
     text-align: center;
     color: #2c3e50;
     background-color: white;
-    cursor: url('./assets/images/curosre.png'), auto;
+    /* cursor: url('./assets/images/curosre.png'), auto; */
   }
 </style>

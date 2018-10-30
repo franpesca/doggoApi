@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu background-color="#221b29" text-color="#fff" active-text-color="#45a0fc" class="hidden-xs-only el-menu-demo" :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+    <el-menu background-color="#453549" text-color="#fff" active-text-color="#45a0fc" class="hidden-xs-only el-menu-demo" :default-active="activeIndex" mode="horizontal" @select="handleSelect">
       <el-menu-item index="1">DoggoDog</el-menu-item>
       <el-submenu index="2">
         <template slot="title">InDaDogs
@@ -18,7 +18,6 @@
                  </el-submenu>
                </el-submenu>
               <el-menu-item index="3">DogDiggity</el-menu-item>
-  <!-- <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item> -->
         </el-menu>
         <div class="line"></div>
 
@@ -48,7 +47,6 @@
     }),
     methods: {
       handleSelect(key, keyPath) {
-        // console.log(key, keyPath);
       }
     }
   }
@@ -56,7 +54,8 @@
 
 <style lang="scss" scoped>
   .burgerManu {
-    background-color: rgb(34, 27, 28);
+    background-color: rgba(44, 28, 48, 0.886);
+    // background-image: linear-gradient(to bottom right, rgba(255, 132, 0, 0.948), rgb(242, 195, 137));
     height: 70px;
     ;
     .wrapper {
