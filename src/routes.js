@@ -5,8 +5,18 @@ import Homepage from './components/Homepage.vue'
 import Navigation from './components/Navigation.vue'
 import Gatto from './components/Gatto.vue'
 import Cane from './components/Cane.vue'
+import store from './store.js'
 
 Vue.use(Router)
+
+const userIsLogged = (to,from,next) => {
+  const username = store.getters.getUsername
+  if (username) {
+    next()
+  } else {
+    next('/login')
+  }
+}
 
 export default new Router ({
   mode: 'history',
@@ -21,22 +31,19 @@ export default new Router ({
       path: '/',
       name: 'home',
       component: Homepage,
-      // beforeEnter: ifLoggedIn
-    },
-    {
-      path: '/nav',
-      name: 'navigation',
-      component: Navigation,
+      beforeEnter: userIsLogged,
     },
     {
       path: '/gatto',
       name: 'gatto',
       component: Gatto,
+      beforeEnter: userIsLogged,
     },
     {
-      path: '/Cane',
-      name: 'Cane',
+      path: '/cane',
+      name: 'cane',
       component: Cane,
+      beforeEnter: userIsLogged,
     },
 
   ]

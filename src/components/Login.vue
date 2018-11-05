@@ -7,12 +7,12 @@
         <a class="social tw" href="https://twitter.com/?lang=it" target="_blank>">Login with Twitter</a>
         <a class="social gg" href="https://accounts.google.com/signin/v2/sl/pwd?hl=IT&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank>">Login with Google</a>
         <p>Or sign in manually</p>
-        <form @keyup.enter.native="checkForm" @submit.prevent="checkForm">
-          <div class="input-wrapper"><i class="icon-profile icon-input " ></i><input autocomplete="off" v-model="form.username" class="social username-psw" type="text" placeholder="Username"></div>
+        <form @keyup.enter.native="checkForm(form)" @submit.prevent="checkForm(form)">
+          <div class="input-wrapper"><i class="icon-profile icon-input"></i><input autocomplete="off" v-model="form.username" class="social username-psw" type="text" placeholder="Username"></div>
           <span class="icon-point-right"></span><p style="color: red; margin-top: -2px; font-weight: 300" v-if="error.user"> Please, type again your username</p>
           <div class="input-wrapper"><i class="icon-password icon-input"></i><input autocomplete="off" :type="inputTypePsw" v-model="form.password" class="social username-psw" placeholder="Password"></div>
           <p style="color: red; margin-top: -2px; font-weight: 300" v-if="error.psw"> Please, type again your password </p>
-          <button type="text" @click="switchType"><i class="icon-eye-blocked" ></i> watch your psw</button><br>
+          <button @click="switchType"><i class="icon-eye-blocked" ></i> watch your psw</button><br>
 
           <input class="social login rotate" type="submit">
         </form>
@@ -28,15 +28,19 @@
   import store from './../store.js'
   import Homepage from './Homepage.vue'
   import {
-    mapState, mapMutations
+    mapState, mapMutations, mapGetters, mapActions
   } from 'vuex';
   export default {
     computed: {
       ...mapState({
-        isLogged: state => state.isLogged,
+        // isLogged: state => state.isLogged,
         form : state => state.form,
         error: state => state.error,
       }),
+      ...mapGetters({
+        getLoggedIn: 'getLoggedIn',
+        isAuthenticated: 'getAuthentication',
+      })
 
     },
     data: () => ({
@@ -47,8 +51,8 @@
       switchType(){
         return this.inputTypePsw = this.inputTypePsw === 'password' ? 'text' : 'password' 
       },
-      ...mapMutations({
-        checkForm:'CHECKFORM'
+      ...mapActions({
+        checkForm:'checkForm'
       })
     },
 
@@ -93,19 +97,19 @@
       a:focus,
       a:hover {
         outline: none;
-        cursor: url('./../assets/images/curosre.png'), auto;
+        // cursor: url('./../assets/images/curosre.png'), auto;
       }
       a:hover {
         opacity: .5;
       }
       input {
-        cursor: url('./../assets/images/curosre.png'), auto;
+        cursor: pointer;
         text-align: center;
       }
       input:focus,
       & input:active {
         outline: none;
-        cursor: url('./../assets/images/curosre.png'), auto;
+        cursor: pointer;
         background: white;
         ;
       }

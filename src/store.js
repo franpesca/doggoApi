@@ -8,10 +8,11 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 
   state: {
-    isAuthenticated: true,
+    isAuthenticated: false,
+    user: '',
     dogs: [],
     cats: [],
-    isLogged: true,
+    isLogged: false,
     form: {
       username: '',
       password: '',
@@ -22,13 +23,32 @@ const store = new Vuex.Store({
     } 
 },
   getters: {
-    getAuthentiation: state => state.isLogged,
+    getLoggedIn: state => state.isLogged, 
     getCats: state => state.cats,
     getDogs: state => state.dogs,
-    isAuthenticated: state => state => state.isAuthenticated,
+    getAuthentication:  state => state.isAuthenticated,
+    getUsername: state => state.form.username,
   },
   mutations: {
-    CHECKFORM(state){
+    SET_IS_LOGGED(state, payload){
+      state.isLogged = payload
+    },
+    SET_AUTHENTICATION(state, payload){
+      state.isAuthenticated = payload
+    },
+    SET_USERNAME(state, payload){
+      state.form.username = payload
+    },
+  SET_CATS(state, payload){
+    state.cats=payload
+  },
+  SET_DOGS(state, payload){
+    state.dogs=payload
+  }
+},
+  actions: {
+    checkForm({commit, state}, payload){
+      console.log('entrato n checkform')
       if ( !state.form.username && !state.form.password) {
         state.error.user = true ,
         state.error.psw = true,
@@ -41,20 +61,19 @@ const store = new Vuex.Store({
        state.error.psw = true 
      } else {
        console.log('entrato nel ultimo else')
-         state.isLogged  
+        commit ('SET_IS_LOGGED',true) 
+        commit ('SET_AUTHENTICATION', true)
+         //  state.isLogged  
          console.log(router.push)
          router.push('/') 
-         state.isAuthenticated
+        //  state.isAuthenticated
+        
+        // state.form.username = payload
+        commit ('SET_USERNAME',payload.username)
+         
     }
   },
-  SET_CATS(state, payload){
-    state.cats=payload
-  },
-  SET_DOGS(state, payload){
-    state.dogs=payload
-  }
-},
-  actions: {
+    
     getCarouselCatsPhotos({ commit }) {
       console.log('catCarousel')
         // commit('SET_LOADING', true);
@@ -66,7 +85,7 @@ const store = new Vuex.Store({
         // commit('SET_LOADING', false);
         })
     },
-    getCarouselDogsPhotos({ commit }) {
+    getCarouselDogsPhotos({ commit } ) {
         // commit('SET_LOADING', true);
         axios.get('https://dog.ceo/api/breeds/image/random/25')
         .then(res => res.data)

@@ -32,7 +32,7 @@ import {
   },
   created(){
     console.log('creatocane')
-    this.$store.dispatch('getCarouselDogsPhotos')
+    this.getCarouselDogsPhotos()
   }
   }
 </script>
