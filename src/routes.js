@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './components/Login'
 import Homepage from './components/Homepage.vue'
-import Navigation from './components/Navigation.vue'
 import Gatto from './components/Gatto.vue'
 import Cane from './components/Cane.vue'
 import store from './store.js'
@@ -10,11 +9,22 @@ import store from './store.js'
 Vue.use(Router)
 
 const userIsLogged = (to,from,next) => {
+  
   const username = store.getters.getUsername
   if (username) {
     next()
   } else {
     next('/login')
+  }
+}
+
+const navError = (to, from, next) => {
+
+  const user = store.getters.getUsername
+  if (user) {
+    next('/')
+  } else {
+    next()
   }
 }
 
@@ -26,6 +36,7 @@ export default new Router ({
       path: '/login',
       name: 'login',
       component: Login,
+      beforeEnter: navError,
     },
     {
       path: '/',

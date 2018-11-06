@@ -1,6 +1,6 @@
 <template>
   <div class="gatto-wrapper">
-    <el-carousel class :interval="4000" type="card" height="200px">
+    <el-carousel class="carosello" :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="(cat ,index) in cats" :key="index" >
           <img v-bind:src="cat.url" />
       </el-carousel-item>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import store from './../store.js'
+
 import {
     mapState, mapActions
   } from 'vuex';
@@ -29,7 +29,7 @@ import {
   },
   created(){
     console.log('oioioio')
-    this.$store.dispatch('getCarouselCatsPhotos')
+            this.$store.dispatch('getCarouselCatsPhotos')
   }
   }
 </script>
@@ -38,6 +38,11 @@ import {
 .gatto-wrapper{
   background-image: linear-gradient(to bottom right, rgba(255, 132, 0, 0.948), rgb(242, 195, 137));
   height: 100vh;
+  .carosello{
+    position: absolute;
+    top: 32%;
+    left: 12%;
+  }
   .carousel-hp {
     padding-top: 3%;
     margin-top: 10%;

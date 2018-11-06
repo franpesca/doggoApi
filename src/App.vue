@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navigation />
+    <navigation-arrows />
     <router-view/>
     <!-- <Footer /> -->
   </div>
@@ -9,6 +10,7 @@
 <script>
   import Home from './components/Home.vue'
   import Navigation from './components/Navigation.vue'
+  import NavigationArrows from './components/NavigationArrows.vue'
   import Footer from './components/Footer.vue'
   import Login from '@/components/Login.vue'
   import {
@@ -25,6 +27,7 @@
     components: {
       Home,
       Navigation,
+      NavigationArrows,
       Footer,
       Login
     }

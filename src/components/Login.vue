@@ -25,15 +25,12 @@
 </template>
 
 <script>
-  import store from './../store.js'
-  import Homepage from './Homepage.vue'
   import {
-    mapState, mapMutations, mapGetters, mapActions
+    mapState, mapGetters, mapActions
   } from 'vuex';
   export default {
     computed: {
       ...mapState({
-        // isLogged: state => state.isLogged,
         form : state => state.form,
         error: state => state.error,
       }),
@@ -61,31 +58,33 @@
 
 <style lang="scss" scoped>
   .bg-image {
-    // background-image: url('./../assets/images/RAZZAPAZZA.jpg');
     background-image: linear-gradient(to bottom right, rgba(44, 28, 48, 0.886), rgb(242, 195, 137));
-    // background-repeat: no-repeat;
-    // background-position: center;
     height: 100vh;
-    background-size: cover;
-    // filter: grayscale(90%);
+    background-size: cover;  
     .gradient {
-      // background-image: linear-gradient(90deg, rgba(41, 39, 39, 0.664) 0%, rgba(66, 74, 80, 0.678) 100%), url("/../../asset/beer.jpg");
       width: 100%;
       height: 100%;
       position: absolute;
       top: 0;
       left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .login-wrapper {
-      width: 32%;
+      width: 35%;
       display: flex;
       flex-direction: column;
-      position: absolute;
-      top: 8%;
-      left: 35%;
+      height: 90%;
       background-color: rgba(255, 255, 255, 0.416);
       border-radius: 5px;
       border: 2px solid rgba(44, 28, 48, 0.886); 
+      @media all and (max-width: 900px) {
+       width: 60%;
+     }
+     @media all and (max-width: 550px) {
+       width: 75%;
+     }
       p:first-child {
         font-size: 28px;
       }
@@ -97,7 +96,6 @@
       a:focus,
       a:hover {
         outline: none;
-        // cursor: url('./../assets/images/curosre.png'), auto;
       }
       a:hover {
         opacity: .5;

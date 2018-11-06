@@ -1,6 +1,6 @@
 <template>
   <div class="cane-wrapper">
-    <el-carousel class :interval="4000" type="card" height="200px">
+    <el-carousel class="carosello" :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="(dog ,index) in dogs" :key="index" >
           <img v-bind:src="dog" />
       </el-carousel-item>
@@ -41,9 +41,15 @@ import {
 .cane-wrapper{
   background-image: linear-gradient(to bottom right, rgba(255, 132, 0, 0.948), rgb(242, 195, 137));
   height: 100vh;
+  .carosello{
+    position: absolute;
+    top: 32%;
+    left: 12%;
+  }
   .carousel-hp {
     padding-top: 23%;
     margin-top: 10%;
+    
     .el-carousel__item h3 {
       color: #475669;
       font-size: 14px;

@@ -8,6 +8,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 
   state: {
+    // moves: [''],
+    move: 0,
     isAuthenticated: false,
     user: '',
     dogs: [],
@@ -28,6 +30,7 @@ const store = new Vuex.Store({
     getDogs: state => state.dogs,
     getAuthentication:  state => state.isAuthenticated,
     getUsername: state => state.form.username,
+    GetMove: state => state.move,
   },
   mutations: {
     SET_IS_LOGGED(state, payload){
@@ -44,6 +47,19 @@ const store = new Vuex.Store({
   },
   SET_DOGS(state, payload){
     state.dogs=payload
+  },
+  MOVE_FW(state){
+    state.move ++
+    // state.moves.push('MOSSA')
+  },
+  MOVE_BW(state){
+    state.move -- 
+    // state.moves.splice(0,1)
+  },
+  LOGOUT_USER(state){
+    state.form.username= '',
+    state.form.password=''
+    state.isAuthenticated = !state.isAuthenticated
   }
 },
   actions: {
@@ -69,11 +85,9 @@ const store = new Vuex.Store({
         //  state.isAuthenticated
         
         // state.form.username = payload
-        commit ('SET_USERNAME',payload.username)
-         
+        commit ('SET_USERNAME',payload.username)     
     }
-  },
-    
+  }, 
     getCarouselCatsPhotos({ commit }) {
       console.log('catCarousel')
         // commit('SET_LOADING', true);
@@ -95,6 +109,20 @@ const store = new Vuex.Store({
         // commit('SET_LOADING', false);
         })
     },
+    goForwards({ commit}) {
+      console.log('moveFw',router)
+      router.go(1)
+      commit('MOVE_FW')
+    },
+    goBackwards({ commit }) {
+      console.log('moveBw',router)
+      router.go(-1)
+      commit('MOVE_BW')
+    },
+    logout({ commit, state  }) {
+      router.push('/login') 
+      commit('LOGOUT_USER')
+    }
   },
 })
 
