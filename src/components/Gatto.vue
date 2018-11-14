@@ -41,7 +41,7 @@ import {
   .carosello{
     position: absolute;
     top: 32%;
-    left: 12%;
+    left: 7%;
   }
   .carousel-hp {
     padding-top: 3%;

@@ -58,7 +58,7 @@
 
 <style lang="scss" scoped>
   .bg-image {
-    background-image: linear-gradient(to bottom right, rgba(44, 28, 48, 0.886), rgb(242, 195, 137));
+    background-image: linear-gradient(to bottom right, rgba(44, 28, 48, 0.886), rgb(137, 158, 242));
     height: 100vh;
     background-size: cover;  
     .gradient {

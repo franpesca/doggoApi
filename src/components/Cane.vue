@@ -1,18 +1,20 @@
 <template>
   <div class="cane-wrapper">
-    <el-carousel class="carosello" :interval="4000" type="card" height="200px">
+    <h1>Welcome to DoggoLand</h1>
+    <cane-game />
+    <!-- <el-carousel class="carosello" :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="(dog ,index) in dogs" :key="index" >
           <img v-bind:src="dog" />
       </el-carousel-item>
-    </el-carousel>
+    </el-carousel> -->
   </div>
 </template>
 
 <script>
-import store from './../store.js'
 import {
     mapState, mapActions
   } from 'vuex';
+import CaneGame from './CaneGame.vue'
   export default {
     computed: {
       ...mapState({
@@ -25,6 +27,9 @@ import {
   data: () =>({
 
   }),
+  components: {
+    CaneGame
+  },
   methods: {
     ...mapActions({
       getCarouselDogsPhotos: 'getCarouselDogsPhotos'
@@ -39,12 +44,19 @@ import {
 
 <style lang="scss">
 .cane-wrapper{
+  h1{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    padding-top: 3%;
+
+  }
   background-image: linear-gradient(to bottom right, rgba(255, 132, 0, 0.948), rgb(242, 195, 137));
   height: 100vh;
   .carosello{
     position: absolute;
     top: 32%;
-    left: 12%;
+    left: 7%;
   }
   .carousel-hp {
     padding-top: 23%;

@@ -7,8 +7,6 @@
 </template>
 
 <script>
-  import store from './../store.js'
-  import Router from 'vue-router'  
   import Navigation from './Navigation'
   import Footer from './Footer'
   

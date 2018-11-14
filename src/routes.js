@@ -19,7 +19,6 @@ const userIsLogged = (to,from,next) => {
 }
 
 const navError = (to, from, next) => {
-
   const user = store.getters.getUsername
   if (user) {
     next('/')

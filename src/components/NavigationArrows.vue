@@ -23,7 +23,7 @@ import { mapActions, mapGetters } from 'vuex';
 
 </script>
 
-<style lang="scss" scoped> 
+<style lang="scss"> 
   .button{
     &:focus,
      {
